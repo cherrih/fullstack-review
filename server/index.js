@@ -2,14 +2,23 @@ const express = require('express');
 let app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const githubHelpers = require('../helpers/github.js');
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(morgan('short'));
 app.use(bodyParser());
 
 app.post('/repos', function (req, res) {
-  console.log(JSON.stringify(req.body.term));
-  res.send(JSON.stringify('Hello world'))
+  let username = JSON.stringify(req.body.term);
+  console.log('USERNAME AT SERVER: ', username);
+  githubHelpers.getReposByUsername(username, (err, result) => {
+    if (err){
+      console.log(err);
+    }
+    console.log('THIS IS THE RESULT: ', result);
+    res.send(JSON.stringify(result))
+  });
+  
   // TODO - your code here!
   // This route should take the github username provided
   // and get the repo information from the github API, then

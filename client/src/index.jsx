@@ -28,7 +28,7 @@ class App extends React.Component {
         return response.json();
       })
       .then(myJson => {
-        console.log(`${term} was searched`);
+        console.log(`${term} WAS SEARCHED`);
         console.log('Success: ', myJson)
       })
       .catch(error => console.error('Error:', error));
