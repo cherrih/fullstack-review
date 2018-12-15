@@ -27,11 +27,12 @@ class App extends React.Component {
       .then(myJson => {
         console.log(`${term} WAS SEARCHED`);
         console.log('Success: ', myJson)
+        this.getRepos();
       })
       .catch(error => console.error('Error:', error));
   }
 
-  componentDidMount() {
+  getRepos() {
     fetch('/repos', {
       method: "GET"
     })
@@ -43,6 +44,10 @@ class App extends React.Component {
       console.log(myJson)
     })
     .catch(error => console.error('Error:', error));
+  }
+
+  componentDidMount() {
+    this.getRepos();
   }
 
   render () {
