@@ -19,10 +19,23 @@ let save = (repos, callback) => {
     if (err) {
       callback(err);
     } else {
-      console.log('I GOT THE DOCS', docs)
       callback(null, docs);
     }
   })
 }
 
-module.exports.save = save;
+let find = (callback) =>{
+  Repo.find()
+    .sort({ stargazers_count: -1 })
+    .limit(25)
+    .exec((err, searchResult) => {
+      if (err) {
+        callback(err);
+      } else {
+        console.log(searchResult)
+        callback(null, searchResult);
+      }
+    });
+}
+
+module.exports = {save, find};

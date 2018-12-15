@@ -12,10 +12,7 @@ class App extends React.Component {
     }
 
   }
-
-  // When a user types a GitHub username into the text field, 
-  // send a POST request to /repos 
-
+  
   search (term) {
     fetch('/repos', {
       method: "POST",
