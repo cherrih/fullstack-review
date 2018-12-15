@@ -9,8 +9,9 @@ const RepoList = (props) => (
       <thead>
         <tr>
           <th>Stargazers</th>
-          <th>Repo Name</th>
           <th>Username</th>
+          <th>Repo Name</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -23,10 +24,3 @@ const RepoList = (props) => (
 )
 
 export default RepoList;
-
-/* <tr>
-        <th>Username</th>
-        <th>Repo Name</th> 
-        <th>Stargazers' Count</th>
-        <th>Link</th>
-      </tr> */
