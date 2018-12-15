@@ -20,9 +20,6 @@ let getReposByUsername = (username, callback) => {
       callback(err);
     } else {
       var info = JSON.parse(body);
-      
-      console.log( "ID FROM GIT: ", info.id);
-      console.log("REPO NAME FROM GIT: ", info.name);
       callback(null, info);
     }
   })  

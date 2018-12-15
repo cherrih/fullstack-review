@@ -12,7 +12,7 @@ class App extends React.Component {
     }
 
   }
-  
+
   search (term) {
     fetch('/repos', {
       method: "POST",
@@ -29,6 +29,20 @@ class App extends React.Component {
         console.log('Success: ', myJson)
       })
       .catch(error => console.error('Error:', error));
+  }
+
+  componentDidMount() {
+    fetch('/repos', {
+      method: "GET"
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(myJson => {
+      this.setState({repos:myJson})
+      console.log(myJson)
+    })
+    .catch(error => console.error('Error:', error));
   }
 
   render () {
