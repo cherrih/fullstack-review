@@ -13,9 +13,25 @@ class App extends React.Component {
 
   }
 
+  // When a user types a GitHub username into the text field, 
+  // send a POST request to /repos 
+
   search (term) {
-    console.log(`${term} was searched`);
-    // TODO
+    fetch('/repos', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify({term})
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(myJson => {
+        console.log(`${term} was searched`);
+        console.log('Success: ', myJson)
+      })
+      .catch(error => console.error('Error:', error));
   }
 
   render () {
