@@ -13,11 +13,14 @@ let getReposByUsername = (username, callback) => {
     }
   };
 
+
+
   request(options, (err, res, body) => {
     if (err) {
       callback(err);
     } else {
       var info = JSON.parse(body);
+      
       console.log( "ID FROM GIT: ", info.id);
       console.log("REPO NAME FROM GIT: ", info.name);
       callback(null, info);
@@ -26,7 +29,3 @@ let getReposByUsername = (username, callback) => {
 }
 
 module.exports.getReposByUsername = getReposByUsername;
-
-// Complete the getReposByUsername function in helpers/github.js. 
-// In this function, you'll use the request npm module to fetch 
-// a user's repositories from the GitHub API.
