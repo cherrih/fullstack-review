@@ -16,7 +16,7 @@ const RepoList = (props) => (
       </thead>
       <tbody>
         {props.repos.map(repo => {
-          return <Repo repo={repo}/>
+          return <Repo repo={repo} key={repo._id}/>
         })}
       </tbody>
     </table>

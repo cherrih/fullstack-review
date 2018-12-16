@@ -41,7 +41,6 @@ class App extends React.Component {
     })
     .then(myJson => {
       this.setState({repos:myJson})
-      console.log(myJson)
     })
     .catch(error => console.error('Error:', error));
   }
