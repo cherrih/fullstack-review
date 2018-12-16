@@ -9,7 +9,8 @@ let repoSchema = new mongoose.Schema({
   repo_name: String,
   stargazers_count: Number,
   html_url: String,
-  username: String
+  username: String,
+  user_url: String
 });
 
 let Repo = mongoose.model('Repo', repoSchema);

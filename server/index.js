@@ -16,23 +16,26 @@ app.post('/repos', (req, res) => {
   githubHelpers.getReposByUsername(username, (err, result) => {
     if (err){
       console.log(err);
-    } 
-    let repos = result.map(repo => {
-      return {
-        _id: repo.id,
-        repo_name: repo.name,
-        stargazers_count: repo.stargazers_count,
-        html_url: repo.html_url,
-        username: repo.owner.login
-      }
-    });
-    db.save(repos, (err, docs) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(JSON.stringify(repos))
-      }
-    })    
+    } else {
+      console.log('this is result', result)
+      let repos = result.map(repo => {
+        return {
+          _id: repo.id,
+          repo_name: repo.name,
+          stargazers_count: repo.stargazers_count,
+          html_url: repo.html_url,
+          username: repo.owner.login,
+          user_url: repo.owner.html_url
+        }
+      });
+      db.save(repos, (err, docs) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send(JSON.stringify(repos))
+        }
+      })  
+    }  
   });
   
 });
